@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/tomsdoo/electronade-filestore/issues"
   },
-  "homepage": "https://github.com/tomsdoo/electronade-filestore#readme"
+  "homepage": "https://github.com/tomsdoo/electronade-filestore#readme",
+  "dependencies": {
+    "@tomsd/fsdb": "^1.1.0"
+  }
 }
