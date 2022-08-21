@@ -15,6 +15,13 @@ export const handles = [
       eventName: string,
       { filePath, obj }: { filePath: string, obj: object }
     ) => new FileDb(filePath).save(obj)
+  },
+  {
+    eventName: "electronade-filestore:remove",
+    handler: (
+      eventName: string,
+      { filePath, id }: { filePath: string; id: string; }
+    ) => new FileDb(filePath).remove(id)
   }
 ];
 
