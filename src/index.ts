@@ -28,6 +28,7 @@ export const handles = [
 export const preloadObject = {
   filestore: {
     get: (filePath: string, id: string) => ipcRenderer.invoke("electronade-filestore:get", { filePath, id }),
-    save: (filePath: string, obj: object) => ipcRenderer.invoke("electronade-filestore:save", { filePath, obj })
+    save: (filePath: string, obj: object) => ipcRenderer.invoke("electronade-filestore:save", { filePath, obj }),
+    remove: (filePath: string, id: string) => ipcRenderer.invoke("electronade-filestore:remove", { filePath, id })
   }
 };
