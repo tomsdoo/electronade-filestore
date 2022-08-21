@@ -6,14 +6,14 @@ export const handles = [
     eventName: "electronade-filestore:get",
     handler: (
       eventName: string,
-      { filePath, id }: { filePath: string, id: string }
+      { filePath, id }: { filePath: string; id: string; }
     ) => new FileDb(filePath).get(id)
   },
   {
     eventName: "electronade-filestore.save",
     handler: (
       eventName: string,
-      { filePath, obj }: { filePath: string, obj: object }
+      { filePath, obj }: { filePath: string; obj: object; }
     ) => new FileDb(filePath).save(obj)
   },
   {
