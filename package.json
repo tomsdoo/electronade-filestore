@@ -19,5 +19,8 @@
   "homepage": "https://github.com/tomsdoo/electronade-filestore#readme",
   "dependencies": {
     "@tomsd/fsdb": "^1.1.0"
+  },
+  "devDependencies": {
+    "electron": "^20.0.3"
   }
 }
