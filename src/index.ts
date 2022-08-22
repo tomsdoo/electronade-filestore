@@ -1,5 +1,5 @@
 import { FileDb } from "@tomsd/fsdb";
-import { ipcRenderer } from "electron";
+const { ipcRenderer } = require("electron");
 
 export const handles = [
   {
