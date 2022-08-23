@@ -50,6 +50,40 @@ describe("preloadObject", () => {
     mocked.restore();
   });
 
+  it("preloadObject.filestore.getIds exists", () => {
+    assert(preloadObject.filestore.getIds);
+  });
+
+  it("preloadObject.filestore.getIds calling", async () => {
+    const mocked = mock(ipcRenderer);
+    const [
+      filePath,
+      mockedValue
+    ] = [
+      "filePath",
+      [ "mocked value" ]
+    ];
+
+    mocked
+      .expects("invoke")
+      .once()
+      .withArgs(
+        "electronade-filestore:getids",
+        { filePath }
+      )
+      .returns(Promise.resolve(mockedValue));
+
+    assert.equal(
+      await eval(preloadObject.filestore.getIds.toString())
+        (filePath)
+        .then((result: any) => JSON.stringify(result)),
+      JSON.stringify(mockedValue)
+    );
+
+    mocked.verify();
+    mocked.restore();
+  });
+
   it("preloadObject.filestore.save exists", () => {
     assert(preloadObject.filestore.save);
   });

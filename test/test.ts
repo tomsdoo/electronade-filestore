@@ -29,6 +29,14 @@ describe("preloadObject to handles", () => {
     );
   });
 
+  it("electronade-filestore:getids", async () => {
+    assert(
+      await eval(preloadObject.filestore.getIds.toString())
+        ("dummyFilePath")
+        in handleStore
+    );
+  });
+
   it("electronade-filestore:save", async () => {
     assert(
       await eval(preloadObject.filestore.save.toString())
