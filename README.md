@@ -16,6 +16,10 @@ electronade: {
       id: string
     ) => Promise<object | undefined>;
 
+    getIds: (
+      filePath: string
+    ) => Promise<string[]>;
+
     save: (
       filePath: string,
       item: object
@@ -41,6 +45,12 @@ const item = await electronade.filestore
 assert.equal(
   item.message,
   "hi"
+);
+
+assert(
+  await electronade.filestore
+    .getIds(filePath)
+    .then(ids => ids.includes(item._id))
 );
 
 assert(
