@@ -10,6 +10,13 @@ export const handles = [
     ) => new FileDb(filePath).get(id)
   },
   {
+    eventName: "electronade-filestore:getids",
+    handler: (
+      event: any,
+      { filePath }: { filePath: string }
+    ) => new FileDb(filePath).getIds()
+  },
+  {
     eventName: "electronade-filestore:save",
     handler: (
       event: any,
@@ -28,6 +35,7 @@ export const handles = [
 export const preloadObject = {
   filestore: {
     get: (filePath: string, id: string) => ipcRenderer.invoke("electronade-filestore:get", { filePath, id }),
+    getIds: (filePath: string) => ipcRenderer.invoke("electronade-filestore:getids", { filePath }),
     save: (filePath: string, item: object) => ipcRenderer.invoke("electronade-filestore:save", { filePath, item }),
     remove: (filePath: string, id: string) => ipcRenderer.invoke("electronade-filestore:remove", { filePath, id })
   }
