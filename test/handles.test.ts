@@ -61,6 +61,27 @@ describe("handles", () => {
     );
   });
 
+  it("electronade-filestore:getids eventName exists", () => {
+    assert(
+      "electronade-filestore:getids" in handleStore
+    );
+  });
+
+  it("electronade-filestore:getids handler", async () => {
+    assert.equal(
+      await handleStore["electronade-filestore:getids"]
+        (
+          {},
+          // @ts-ignore
+          {
+            filePath
+          }
+        )
+        .then(ids => JSON.stringify(ids)),
+      JSON.stringify([ testId ])
+    );
+  });
+
   it("electronade-filestore:get eventName exists", () => {
     assert(
       "electronade-filestore:get" in handleStore
