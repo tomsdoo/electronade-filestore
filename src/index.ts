@@ -4,39 +4,37 @@ const { ipcRenderer } = require("electron");
 export const handles = [
   {
     eventName: "electronade-filestore:get",
-    handler: (
-      event: any,
-      { filePath, id }: { filePath: string; id: string; }
-    ) => new FileDb(filePath).get(id)
+    handler: (event: any, { filePath, id }: { filePath: string; id: string }) =>
+      new FileDb(filePath).get(id),
   },
   {
     eventName: "electronade-filestore:getids",
-    handler: (
-      event: any,
-      { filePath }: { filePath: string }
-    ) => new FileDb(filePath).getIds()
+    handler: (event: any, { filePath }: { filePath: string }) =>
+      new FileDb(filePath).getIds(),
   },
   {
     eventName: "electronade-filestore:save",
     handler: (
       event: any,
-      { filePath, item }: { filePath: string; item: object; }
-    ) => new FileDb(filePath).save(item)
+      { filePath, item }: { filePath: string; item: object }
+    ) => new FileDb(filePath).save(item),
   },
   {
     eventName: "electronade-filestore:remove",
-    handler: (
-      event: any,
-      { filePath, id }: { filePath: string; id: string; }
-    ) => new FileDb(filePath).remove(id)
-  }
+    handler: (event: any, { filePath, id }: { filePath: string; id: string }) =>
+      new FileDb(filePath).remove(id),
+  },
 ];
 
 export const preloadObject = {
   filestore: {
-    get: (filePath: string, id: string) => ipcRenderer.invoke("electronade-filestore:get", { filePath, id }),
-    getIds: (filePath: string) => ipcRenderer.invoke("electronade-filestore:getids", { filePath }),
-    save: (filePath: string, item: object) => ipcRenderer.invoke("electronade-filestore:save", { filePath, item }),
-    remove: (filePath: string, id: string) => ipcRenderer.invoke("electronade-filestore:remove", { filePath, id })
-  }
+    get: (filePath: string, id: string) =>
+      ipcRenderer.invoke("electronade-filestore:get", { filePath, id }),
+    getIds: (filePath: string) =>
+      ipcRenderer.invoke("electronade-filestore:getids", { filePath }),
+    save: (filePath: string, item: object) =>
+      ipcRenderer.invoke("electronade-filestore:save", { filePath, item }),
+    remove: (filePath: string, id: string) =>
+      ipcRenderer.invoke("electronade-filestore:remove", { filePath, id }),
+  },
 };
