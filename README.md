@@ -1,6 +1,7 @@
 # electronade-filestore
 
-It's a package for electronade that provides the storing features in a file.
+It's a package for electronade that provides the storing features in a file.  
+See [electronade-filestore.netlify.app](https://electronade-filestore.netlify.app/) also.
 
 # Installation
 ``` shell
