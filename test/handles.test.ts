@@ -13,7 +13,7 @@ let store: FileDb;
 let testId: string;
 
 const handleStore = Object.fromEntries(
-  handles.map(({ eventName, handler }) => [ eventName, handler ])
+  handles.map(({ eventName, handler }) => [eventName, handler])
 );
 
 describe("handles", () => {
@@ -37,92 +37,76 @@ describe("handles", () => {
   });
 
   it("electronade-filestore:save eventName exists", () => {
-    assert(
-      "electronade-filestore:save" in handleStore
-    );
+    assert("electronade-filestore:save" in handleStore);
   });
 
   it("electronade-filestore:save handler", async () => {
     assert.equal(
-      await handleStore["electronade-filestore:save"]
-        (
-          {},
-          // @ts-ignore
-          {
-            filePath,
-            item: {
-               _id: testId,
-               name: "test name"
-             }
-           }
-        )
-        .then(({ _id }) => _id),
+      await handleStore["electronade-filestore:save"](
+        {},
+        // @ts-ignore
+        {
+          filePath,
+          item: {
+            _id: testId,
+            name: "test name",
+          },
+        }
+      ).then(({ _id }) => _id),
       testId
     );
   });
 
   it("electronade-filestore:getids eventName exists", () => {
-    assert(
-      "electronade-filestore:getids" in handleStore
-    );
+    assert("electronade-filestore:getids" in handleStore);
   });
 
   it("electronade-filestore:getids handler", async () => {
     assert.equal(
-      await handleStore["electronade-filestore:getids"]
-        (
-          {},
-          // @ts-ignore
-          {
-            filePath
-          }
-        )
-        .then(ids => JSON.stringify(ids)),
-      JSON.stringify([ testId ])
+      await handleStore["electronade-filestore:getids"](
+        {},
+        // @ts-ignore
+        {
+          filePath,
+        }
+      ).then((ids) => JSON.stringify(ids)),
+      JSON.stringify([testId])
     );
   });
 
   it("electronade-filestore:get eventName exists", () => {
-    assert(
-      "electronade-filestore:get" in handleStore
-    );
+    assert("electronade-filestore:get" in handleStore);
   });
 
   it("electronade-filestore:get handler", async () => {
     assert.equal(
-      await handleStore["electronade-filestore:get"]
-        (
-          {},
-          // @ts-ignore
-          {
-            filePath,
-            id: testId
-          }
-        )
-        .then(({ _id }) => _id),
+      await handleStore["electronade-filestore:get"](
+        {},
+        // @ts-ignore
+        {
+          filePath,
+          id: testId,
+        }
+      ).then(({ _id }) => _id),
       testId
     );
   });
 
   it("electronade-filestore:remove eventName exists", () => {
-    assert(
-      "electronade-filestore:remove" in handleStore
-    );
+    assert("electronade-filestore:remove" in handleStore);
   });
 
   it("electronade-filestore:remove handler", async () => {
     assert.equal(
-      await handleStore["electronade-filestore:remove"]
-        (
-          {},
-          // @ts-ignore
-          {
-            filePath,
-            id: testId
-          }
-        ),
+      await handleStore["electronade-filestore:remove"](
+        {},
+        // @ts-ignore
+        {
+          filePath,
+          id: testId,
+        }
+      ),
       undefined
     );
   });
-
 });
