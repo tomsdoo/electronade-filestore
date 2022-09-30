@@ -3,10 +3,11 @@ import { strict as assert } from "assert";
 
 import { handles, preloadObject } from "../src/";
 
+// eslint-disable-next-line  @typescript-eslint/no-unused-vars
 const ipcRenderer: {
   invoke: (eventName: string, ...args: any[]) => Promise<any>;
 } = {
-  invoke: (eventName: string) => Promise.resolve(eventName),
+  invoke: async (eventName: string) => await Promise.resolve(eventName),
 };
 
 let handleStore: {
@@ -22,6 +23,7 @@ describe("preloadObject to handles", () => {
 
   it("electronade-filestore:get", async () => {
     assert(
+      // eslint-disable-next-line no-eval
       (await eval(preloadObject.filestore.get.toString())(
         "dummyFilePath",
         "dummyId"
@@ -31,6 +33,7 @@ describe("preloadObject to handles", () => {
 
   it("electronade-filestore:getids", async () => {
     assert(
+      // eslint-disable-next-line no-eval
       (await eval(preloadObject.filestore.getIds.toString())(
         "dummyFilePath"
       )) in handleStore
@@ -39,6 +42,7 @@ describe("preloadObject to handles", () => {
 
   it("electronade-filestore:save", async () => {
     assert(
+      // eslint-disable-next-line no-eval
       (await eval(preloadObject.filestore.save.toString())(
         "dummyFilePath",
         {}
@@ -48,6 +52,7 @@ describe("preloadObject to handles", () => {
 
   it("electronade-filestore:remove", async () => {
     assert(
+      // eslint-disable-next-line no-eval
       (await eval(preloadObject.filestore.remove.toString())(
         "dummyFilePath",
         "dummyId"

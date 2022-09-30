@@ -7,8 +7,8 @@ import { preloadObject } from "../src/";
 const ipcRenderer: {
   invoke: (eventName: string, ...args: any[]) => Promise<any>;
 } = {
-  invoke: (eventName: string, ...args: any[]) =>
-    Promise.resolve({ eventName, args }),
+  invoke: async (eventName: string, ...args: any[]) =>
+    await Promise.resolve({ eventName, args }),
 };
 
 describe("preloadObject", () => {
@@ -34,6 +34,7 @@ describe("preloadObject", () => {
       .withArgs("electronade-filestore:get", { filePath, id })
       .returns(Promise.resolve(mockedValue));
     assert.equal(
+      // eslint-disable-next-line no-eval
       await eval(preloadObject.filestore.get.toString())(filePath, id).then(
         (result: any) => JSON.stringify(result)
       ),
@@ -58,6 +59,7 @@ describe("preloadObject", () => {
       .returns(Promise.resolve(mockedValue));
 
     assert.equal(
+      // eslint-disable-next-line no-eval
       await eval(preloadObject.filestore.getIds.toString())(filePath).then(
         (result: any) => JSON.stringify(result)
       ),
@@ -87,6 +89,7 @@ describe("preloadObject", () => {
       .returns(Promise.resolve(mockedValue));
 
     assert.equal(
+      // eslint-disable-next-line no-eval
       await eval(preloadObject.filestore.save.toString())(filePath, item).then(
         (result: any) => JSON.stringify(result)
       ),
@@ -111,6 +114,7 @@ describe("preloadObject", () => {
       .returns(Promise.resolve(undefined));
 
     assert.equal(
+      // eslint-disable-next-line no-eval
       await eval(preloadObject.filestore.remove.toString())(filePath, id),
       undefined
     );

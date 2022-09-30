@@ -44,7 +44,7 @@ describe("handles", () => {
     assert.equal(
       await handleStore["electronade-filestore:save"](
         {},
-        // @ts-ignore
+        // @ts-expect-error
         {
           filePath,
           item: {
@@ -65,7 +65,7 @@ describe("handles", () => {
     assert.equal(
       await handleStore["electronade-filestore:getids"](
         {},
-        // @ts-ignore
+        // @ts-expect-error
         {
           filePath,
         }
@@ -82,7 +82,7 @@ describe("handles", () => {
     assert.equal(
       await handleStore["electronade-filestore:get"](
         {},
-        // @ts-ignore
+        // @ts-expect-error
         {
           filePath,
           id: testId,
@@ -100,7 +100,7 @@ describe("handles", () => {
     assert.equal(
       await handleStore["electronade-filestore:remove"](
         {},
-        // @ts-ignore
+        // @ts-expect-error
         {
           filePath,
           id: testId,
