@@ -2,6 +2,14 @@
 
 It's a package for [electronade](https://electronade.netlify.app) that provides the storing features in a file.
 
+![npm](https://img.shields.io/npm/v/electronade-filestore)
+![NPM](https://img.shields.io/npm/l/electronade-filestore)
+![npms.io (quality)](https://img.shields.io/npms-io/quality-score/electronade-filestore)
+![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/electronade-filestore)
+![Maintenance](https://img.shields.io/maintenance/yes/2022)
+
+[![](https://nodei.co/npm/electronade-filestore.svg?mini=true)](https://www.npmjs.com/package/electronade-filestore)
+
 ## installation
 
 ``` shell
